@@ -38,7 +38,7 @@ end
 
 Failing to override `arrangeable_fields` will raise a `NotImplementedError`.
 
-Now sort your objects by calling `arrange` on a comma-separated order string. Prepend a negative sign `-` before a key to order by that key descendingly:
+Now sort your objects by calling `arrange` on your model and passing a comma-separated order string. Prepend a negative sign `-` before a key to order by that key descendingly:
 
 ```ruby
 
