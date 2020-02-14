@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Umar Al-Kfaween"]
   spec.email         = ["omar.ka923@gmail.com"]
 
-  spec.summary       = %q{Arrangeable provides an organized and seamless way to sort your model objects by different attributes }
-  spec.description   = %q{Arrangeable provides an organized and seamless way to sort your model objects by different attributes }
+  spec.summary       = %q{Arrangeable provides an organized and seamless way to sort your ActiveRecord objects by different attributes. }
+  spec.description   = %q{Arrangeable provides an organized and seamless way to sort your ActiveRecord objects by different attributes. }
   spec.homepage      = "https://github.com/umar221b/arrangeable"
   spec.license       = "MIT"
 
