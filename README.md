@@ -1,6 +1,6 @@
 # Arrangeable
 
-Arrangeable provides an organized and seamless way to sort your model objects by different attributes.
+Arrangeable provides an organized and seamless way to sort your ActiveRecord objects by different attributes.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-Include Arrangeable inside ApplicationRecord or directly inside your model and override the `arrangeable_fields` method for each model to whitelist the fields you want to use for sorting:
+Include Arrangeable inside ApplicationRecord or directly inside your ActiveRecord model and override the `arrangeable_fields` method for each model to whitelist the fields you want to use for sorting:
 
 ```ruby
 class User < ApplicationRecord
@@ -38,7 +38,7 @@ end
 
 Failing to override `arrangeable_fields` will raise a `NotImplementedError`.
 
-Now sort your model objects by calling `arrange` on a comma-separated order string. Prepend a negative sign `-` before a key to order by that key descendingly:
+Now sort your objects by calling `arrange` on a comma-separated order string. Prepend a negative sign `-` before a key to order by that key descendingly:
 
 ```ruby
 
