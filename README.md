@@ -1,15 +1,13 @@
 # Arrangeable
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/arrangeable`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Arrangeable provides an organized and seamless way to sort your model objects by different attributes.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'arrangeable'
+gem 'arrangeable', '~> 0.1.0'
 ```
 
 And then execute:
@@ -22,17 +20,41 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Include Arrangeable inside ApplicationRecord or directly inside your model and override the `arrangeable_fields` method for each model to whitelist the fields you want to use for sorting:
 
-## Development
+```ruby
+class User < ApplicationRecord
+  include Arrangeable
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+  concerning :Arranging do
+    class_methods do
+      def arrangeable_fields
+        %w[id first_name last_name]
+      end
+    end
+  end
+end
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Failing to override `arrangeable_fields` will raise a `NotImplementedError`.
+
+Now sort your model objects by calling `arrange` on a comma-separated order string. Prepend a negative sign `-` before a key to order by that key descendingly:
+
+```ruby
+
+@users = User.all
+
+order_string = 'first_name,-id'
+@users = @users.arrange(order_string)
+```
+
+The previous example will generate the following SQL order clause: `ORDER BY first_name ASC, id DESC`.
+
+Note that `id` can always be used for sorting regardless of whether you whitelist it or not. Any non whitelisted sorting keys will be ignored.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/arrangeable.
+Bug reports and pull requests are welcome on GitHub at https://github.com/umar221b/arrangeable.
 
 ## License
 
