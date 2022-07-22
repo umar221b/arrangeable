@@ -7,7 +7,7 @@ Arrangeable provides an organized and seamless way to sort your ActiveRecord obj
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'arrangeable', '~> 0.1.3'
+gem 'arrangeable', '~> 0.1.5'
 ```
 
 And then execute:
