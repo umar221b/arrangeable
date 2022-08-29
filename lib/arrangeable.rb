@@ -30,7 +30,7 @@ module Arrangeable
           key = key[1..-1]
         end
         next unless arrangeable_fields.include?(key)
-        key + order
+        "#{self.table_name}.#{key}" + order
       end.compact.join(', ')
     end
   end
